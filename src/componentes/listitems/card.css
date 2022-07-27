@@ -4,3 +4,9 @@
     background-color: #fbe3e3;
     margin: 1rem;
 }
+
+#itemcount{
+    background-color: aliceblue;
+    margin: 0.5rem;
+    cursor: pointer;
+}
