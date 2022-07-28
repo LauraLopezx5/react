@@ -1,4 +1,5 @@
-import Listitems from "./componentes/listitems/Listitems"
+
+import ItemListContainer from './componentes/container/ItemListContainer'
 import Navbar from "./componentes/navbar/Navbar"
 
 
@@ -7,10 +8,10 @@ import Navbar from "./componentes/navbar/Navbar"
 function App() {
 
   return (
-    <div>
+    <>
       <Navbar />
-      <Listitems/>
-    </div>
+      <ItemListContainer/>
+    </>
   )
 }
 
