@@ -1,8 +1,18 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 export const Itemcount = ({stock}) => {
 
 const [contador,setContador]=useState(1)
+const [textoBotonCarrito,setTextoBotonCarrito]=useState("Agregar al carrito")
+
+useEffect(()=>{
+  if(stock==0){
+    setTextoBotonCarrito("Sin stock")
+    setContador(0)
+  }
+},[])
+
+
   const restar = ()=>{
     if(contador>1)
     setContador (contador-1)
@@ -20,7 +30,7 @@ const [contador,setContador]=useState(1)
           <button className = "suma" onClick={sumar}>+</button>
         </div>
         <div className='d-flex justify-content-center'>
-        <button className="btn btn-secondary d-flex justify-content-center">Agregar al Carrito</button>
+        <button id="botonCarrito"className="btn btn-secondary d-flex">{textoBotonCarrito}</button>
         </div>
         
 

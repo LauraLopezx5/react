@@ -1,9 +1,11 @@
 
+import { useState } from "react"
 import { BsCart4 } from "react-icons/bs"
 
 const Cartwidge = () => {
+  const [cantidadProductos,setCantidadProductos]=useState(0)
   return (
-    <div><BsCart4/></div>
+    <div>({cantidadProductos}) <BsCart4/></div>
   )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Cartwidge from './Cartwidge'
 import './navbar.css'
 
@@ -7,30 +8,21 @@ const Navbar = () => {
     <div>
       <nav className ="navbar navbar-expand-lg bg-dark navbar-dark">
         <div className ="container-fluid">
-          <a className ="navbar-brand" href="#">Inicio</a>
-          <a href="#" className="navbar-brand"> <Cartwidge/> </a>
+          <Link to = "/" className ="navbar-brand">Inicio</Link>
+          <Link to = "/carrito" className ="navbar-brand"><Cartwidge/></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">Seccion 1</a>
-              </li>
-              <li className ="nav-item">
-                <a className="nav-link" href="#">Seccion 2</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Seccion 3</a>
-              </li>
+              
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Seccion 4
+                  Categorias
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">1</a></li>
-                  <li><a className="dropdown-item" href="#">2</a></li>
-                  <li><a className="dropdown-item" href="#">3</a></li>
+                  <li><Link to = "/categoria1" className ="dropdown-item">Categoria 1</Link></li>
+                  <li><Link to = "/categoria2" className ="dropdown-item">Categoria 2</Link></li>
                 </ul>
               </li>
             </ul>

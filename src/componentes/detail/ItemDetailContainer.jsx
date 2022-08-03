@@ -1,10 +1,11 @@
-
 import { useEffect, useState } from 'react'
-import {Itemlist} from './Itemlist'
+import { useParams } from 'react-router-dom'
+import ItemDetail from './ItemDetail'
 
-const ItemListContainer = () => {
+const ItemDetailContainer = () => {
 
-  const [productos,setProductos] = useState ([])
+  const {idProducto}=useParams()
+  const [productosDetail,setProductosDetail] = useState ([])
 
   
   const arrayProductos = [
@@ -23,17 +24,16 @@ const ItemListContainer = () => {
     })
   
     promesaProductos.then((resultado)=>{
-      setProductos(resultado)
+      setProductosDetail(resultado)
     })
     
   },[])
 
-     
   return (
-    <div>
-        <Itemlist prod = {productos}/>
+    <div className = "d-flex justify-content-center">
+      <ItemDetail idProducto = {idProducto} productos = {productosDetail}/>
     </div>
   )
 }
 
-export default ItemListContainer
+export default ItemDetailContainer
