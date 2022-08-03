@@ -16,17 +16,7 @@ const ItemDetailContainer = () => {
 
 
   useEffect(()=>{
-    const promesaProductos = new Promise((resolve, reject) => {
-
-      setTimeout(()=>{
-        resolve(arrayProductos)
-      },2000)
-    })
-  
-    promesaProductos.then((resultado)=>{
-      setProductosDetail(resultado)
-    })
-    
+    setProductosDetail(arrayProductos)
   },[])
 
   return (

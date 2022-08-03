@@ -12,7 +12,7 @@ const ItemDetail = ({idProducto,productos}) => {
         console.log(item)
       }
     });
-  },[])
+  })
 
 
   

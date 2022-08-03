@@ -10,7 +10,7 @@ useEffect(()=>{
     setTextoBotonCarrito("Sin stock")
     setContador(0)
   }
-},[])
+})
 
 
   const restar = ()=>{
