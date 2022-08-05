@@ -9,7 +9,6 @@ const ItemDetail = ({idProducto,productos}) => {
     productos.forEach(producto => {
       if(producto.id==idProducto){
         setItem(producto)
-        console.log(item)
       }
     });
   })

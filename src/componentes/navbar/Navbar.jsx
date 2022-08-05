@@ -9,7 +9,7 @@ const Navbar = () => {
       <nav className ="navbar navbar-expand-lg bg-dark navbar-dark">
         <div className ="container-fluid">
           <Link to = "/" className ="navbar-brand">Inicio</Link>
-          <Link to = "/carrito" className ="navbar-brand"><Cartwidge/></Link>
+          <Link to = "/cart" className ="navbar-brand"><Cartwidge/></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -21,8 +21,8 @@ const Navbar = () => {
                   Categorias
                 </a>
                 <ul className="dropdown-menu">
-                  <li><Link to = "/categoria1" className ="dropdown-item">Categoria 1</Link></li>
-                  <li><Link to = "/categoria2" className ="dropdown-item">Categoria 2</Link></li>
+                  <li><Link to ="/category/1" className ="dropdown-item">Categoria 1</Link></li>
+                  <li><Link to ="/category/2" className ="dropdown-item">Categoria 2</Link></li>
                 </ul>
               </li>
             </ul>

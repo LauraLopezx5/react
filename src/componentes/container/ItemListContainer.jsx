@@ -1,18 +1,21 @@
 
 import { useEffect, useState } from 'react'
 import {Itemlist} from './Itemlist'
+import { useParams } from 'react-router-dom'
+
 
 const ItemListContainer = () => {
 
   const [productos,setProductos] = useState ([])
-
+  const {idCategory}=useParams()
   
   const arrayProductos = [
-    {nombre : 'Producto 1',id:1,stock:4,precio:5000,img:'multimedia/sombra.png'},
-    {nombre : 'Producto 2',id:2,stock:0,precio:7000,img:'multimedia/sombra.png'},
-    {nombre : 'Producto 3',id:3,stock:3,precio:4500,img:'multimedia/sombra.png'}
+    {nombre : 'Producto 1',id:1,stock:4,precio:5000,img:'multimedia/sombra.png',categoria:"1"},
+    {nombre : 'Producto 2',id:2,stock:0,precio:7000,img:'multimedia/sombra.png',categoria:"2"},
+    {nombre : 'Producto 3',id:3,stock:3,precio:4500,img:'multimedia/sombra.png',categoria:"1"}
   ]
 
+  
 
   useEffect(()=>{
     const promesaProductos = new Promise((resolve, reject) => {
@@ -23,10 +26,24 @@ const ItemListContainer = () => {
     })
   
     promesaProductos.then((resultado)=>{
-      setProductos(resultado)
+      if(idCategory=="1"){
+        const nuevoArray = resultado.filter(res=>{
+          return res.categoria=="1"
+        })
+        setProductos(nuevoArray)
+      }
+      if(idCategory=="2"){
+        const nuevoArray = resultado.filter(res=>{
+          return res.categoria=="2"
+        })
+        setProductos(nuevoArray)
+      }
+      if(idCategory==undefined){
+        setProductos(resultado)
+      }
+      
     })
-    
-  },[])
+  })
 
      
   return (

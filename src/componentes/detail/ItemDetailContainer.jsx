@@ -9,9 +9,9 @@ const ItemDetailContainer = () => {
 
   
   const arrayProductos = [
-    {nombre : 'Producto 1',id:1,stock:4,precio:5000,img:'multimedia/sombra.png'},
-    {nombre : 'Producto 2',id:2,stock:0,precio:7000,img:'multimedia/sombra.png'},
-    {nombre : 'Producto 3',id:3,stock:3,precio:4500,img:'multimedia/sombra.png'}
+    {nombre : 'Producto 1',id:1,stock:4,precio:5000,img:'multimedia/sombra.png',categoria:"1"},
+    {nombre : 'Producto 2',id:2,stock:0,precio:7000,img:'multimedia/sombra.png',categoria:"2"},
+    {nombre : 'Producto 3',id:3,stock:3,precio:4500,img:'multimedia/sombra.png',categoria:"1"}
   ]
 
 
