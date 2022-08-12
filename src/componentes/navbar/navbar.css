@@ -11,4 +11,5 @@
 .icono{
     display: flex;
     flex-direction: row;
+    width: 2rem;
 }

@@ -11,6 +11,7 @@ const CartContext = ({ children }) => {
 
   useEffect(() => {
     buscarProductoEnCarrito()
+    ActualizarTotalAPagar()
     
   },[productoAChequear])
 
@@ -28,7 +29,6 @@ const CartContext = ({ children }) => {
 
   }
 
-
   function agregarProductoAlCarrito() {
     if (Object.entries(productoAChequear).length != 0) {
       productosAgregados.push(productoAChequear)
@@ -37,6 +37,15 @@ const CartContext = ({ children }) => {
 
     }
   }
+
+  function ActualizarTotalAPagar(){
+    let total = 0
+    productosAgregados.forEach(producto=>{
+        total += producto.precio*producto.cantidad
+    })
+    setTotalAPagar(total)
+    console.log(totalAPagar)
+}
 
 
   return (

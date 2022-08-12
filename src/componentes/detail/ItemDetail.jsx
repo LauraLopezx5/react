@@ -24,7 +24,7 @@ const ItemDetail = ({idProducto,productos}) => {
         <p>Precio $ {item.precio}</p>
         <p>Descripcion </p>
 
-        <Itemcount stock = {item.stock}/>
+        <Itemcount stock = {item.stock} item = {item}/>
       </div>
     </div>
   )
