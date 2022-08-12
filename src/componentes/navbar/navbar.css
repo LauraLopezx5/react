@@ -1,3 +1,14 @@
 .dropdown-menu{
     background-color: #fbe3e3;
 }
+
+.contadorCarrito{
+    font-size: small;
+    position: relative;
+    top: -10px;
+
+}
+.icono{
+    display: flex;
+    flex-direction: row;
+}

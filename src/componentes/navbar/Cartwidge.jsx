@@ -1,11 +1,28 @@
 
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { BsCart4 } from "react-icons/bs"
+import { myContext } from "../cartContext/CartContext"
 
 const Cartwidge = () => {
-  const [cantidadProductos,setCantidadProductos]=useState(0)
+
+  const { cantidadProductos } = useContext(myContext)
+  const [mostrarContador, setMostrarContador] = useState(false)
+  useEffect(() => {
+    if (cantidadProductos != 0) {
+      setMostrarContador(true)
+    } else {
+      setMostrarContador(false)
+    }
+  }, [cantidadProductos])
+
+
   return (
-    <div>({cantidadProductos}) <BsCart4/></div>
+    <>
+      <div className="icono">
+        <BsCart4 />
+        <div className="contadorCarrito">{mostrarContador && cantidadProductos}</div>
+      </div>
+    </>
   )
 }
 

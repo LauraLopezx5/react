@@ -2,12 +2,15 @@
 import { useEffect, useState } from 'react'
 import {Itemlist} from './Itemlist'
 import { useParams } from 'react-router-dom'
+import Loading from '../loading/Loading'
 
 
 const ItemListContainer = () => {
 
   const [productos,setProductos] = useState ([])
+  const [loading,setLoading] = useState(true)
   const {idCategory}=useParams()
+
   
   const arrayProductos = [
     {nombre : 'Producto 1',id:1,stock:4,precio:5000,img:'multimedia/sombra.png',categoria:"1"},
@@ -22,6 +25,7 @@ const ItemListContainer = () => {
 
       setTimeout(()=>{
         resolve(arrayProductos)
+        setLoading(false)
       },2000)
     })
   
@@ -48,6 +52,7 @@ const ItemListContainer = () => {
      
   return (
     <div>
+        <Loading loading = {loading}/>
         <Itemlist prod = {productos}/>
     </div>
   )
