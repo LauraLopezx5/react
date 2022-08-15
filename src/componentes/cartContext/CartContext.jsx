@@ -8,18 +8,27 @@ const CartContext = ({ children }) => {
   const [productosAgregados, setProductosAgregados] = useState([])
   const [productoAChequear, setProductoAChequear] = useState({})
   const [totalAPagar, setTotalAPagar] = useState(0)
+  const [vaciarCarrito, setVaciarCarrito] = useState(false)
+
 
   useEffect(() => {
     buscarProductoEnCarrito()
-    ActualizarTotalAPagar()
     
   },[productoAChequear])
+
+  useEffect(()=>{
+    if(vaciarCarrito==true){
+      funcionVaciarCarrito()
+    }
+  },[vaciarCarrito])
 
   function buscarProductoEnCarrito() {
     productosAgregados.forEach(producto => {
       if (producto.id == productoAChequear.id) {
         producto.cantidad += productoAChequear.cantidad
         setCantidadProductos(cantidadProductos+productoAChequear.cantidad)
+        ActualizarTotalAPagar()
+        
         }
       
         // localStorage.setItem('carrito',JSON.stringify(CARRITO))
@@ -34,22 +43,28 @@ const CartContext = ({ children }) => {
       productosAgregados.push(productoAChequear)
       setProductosAgregados(productosAgregados)
       setCantidadProductos(cantidadProductos+productoAChequear.cantidad)
+      ActualizarTotalAPagar()
 
     }
   }
 
   function ActualizarTotalAPagar(){
-    let total = 0
-    productosAgregados.forEach(producto=>{
-        total += producto.precio*producto.cantidad
-    })
-    setTotalAPagar(total)
+    setTotalAPagar( productosAgregados.reduce((suma,producto)=>
+      suma + producto.precio*producto.cantidad,0
+    ))
     console.log(totalAPagar)
+    
+}
+
+function funcionVaciarCarrito(){
+  setProductosAgregados([])
+  setCantidadProductos(0)
+  setVaciarCarrito(false)
 }
 
 
   return (
-    <myContext.Provider value={{ cantidadProductos, setCantidadProductos, productosAgregados, setProductosAgregados, productoAChequear, setProductoAChequear }}>{children}</myContext.Provider>
+    <myContext.Provider value={{ cantidadProductos, setCantidadProductos, productosAgregados, setProductosAgregados, productoAChequear, setProductoAChequear, setVaciarCarrito}}>{children}</myContext.Provider>
   )
 }
 

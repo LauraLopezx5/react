@@ -4,5 +4,36 @@
     justify-content: center;
     align-items: center;
     margin: 1rem;
+}
+.botonesCarritoDiv{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.botonesCarrito{
     
+    margin: 1rem;
+    width: 237px;
+    display: flex;
+    justify-content: center;
+}
+
+.cardCarrito{
+    width: 18rem;
+    background-color: #fbe3e3;
+    margin: 1rem;
+}
+
+.imagenCarrito{
+    height: 182px;
+    width: 135px;
+}
+
+.contenedorCarrito{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
 }

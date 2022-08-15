@@ -50,7 +50,7 @@ export const Itemcount = ({ stock, item }) => {
       </div>
       <div className='d-flex justify-content-center'>
         {botonAgregarAlCarrito ? <button onClick={agregarAlCarrito} id="botonCarrito" className="btn btn-secondary d-flex">{textoBotonCarrito}</button>
-          : <Link to={"/cart"}><button onClick={agregarProducto} id="finalizarCompra" className="btn btn-secondary d-flex">Finalizar Compra</button></Link>}
+          : <Link style={{textDecoration:"none"}} to={"/cart"}><button onClick={agregarProducto} id="finalizarCompra" className="btn btn-secondary d-flex">Finalizar Compra</button></Link>}
       </div>
 
 

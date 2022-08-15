@@ -6,7 +6,7 @@ const CarritoVacio = () => {
   return (
     <div className='carritoVacio'>
         <div className='carritoVacio'>No hay productos en el carrito</div>
-        <Link to = {"/"}><button className="btn btn-secondary d-flex">Ver Productos</button></Link>
+        <Link style={{textDecoration:"none"}} to = {"/"}><button className="btn btn-secondary d-flex">Ver Productos</button></Link>
     </div>
   )
 }

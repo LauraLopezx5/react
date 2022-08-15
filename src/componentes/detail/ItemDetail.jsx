@@ -16,7 +16,7 @@ const ItemDetail = ({idProducto,productos}) => {
 
   
   return (
-    <div className ="card">
+    <div className ="card cardProductos">
       <img src="../multimedia/sombra.png" className="card-img-top" alt="..." />
       
       <div className ="card-body">
