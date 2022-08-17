@@ -32,9 +32,9 @@ const Cart = () => {
           <MostrarProductosCarrito key={producto.id} producto={producto} />
         ))}
       </div>
-      {!carritoVacio && <div> <div>Total a Pagar: {totalAPagar}</div><div className='botonesCarritoDiv'><button  onClick={botonVaciarCarrito} id="botonVaciarCarrito" className="botonesCarrito btn btn-secondary d-flex">Vaciar Carrito</button>
-        <Link style={{ textDecoration: "none" }} to={"/"}><button id="botonVaciarCarrito" className="botonesCarrito btn btn-secondary d-flex">Seguir Comprando</button></Link>
-        <button id="botonVaciarCarrito" className="botonesCarrito btn btn-secondary d-flex">Finalizar Compra</button></div>
+      {!carritoVacio && <div> <div id='totalAPagar'>Total a Pagar: {totalAPagar}</div><div className='botonesCarritoDiv'><button  onClick={botonVaciarCarrito} className="botonesCarrito btn btn-secondary">Vaciar Carrito</button>
+        <Link style={{ textDecoration: "none" }} to={"/"}><button className="botonesCarrito btn btn-secondary">Seguir Comprando</button></Link>
+        <button className="botonesCarrito btn btn-secondary">Finalizar Compra</button></div>
         </div>}
       </div>
   )
