@@ -1,61 +1,47 @@
 
 import { useEffect, useState } from 'react'
-import {Itemlist} from './Itemlist'
+import { Itemlist } from './Itemlist'
 import { useParams } from 'react-router-dom'
 import Loading from '../loading/Loading'
+import { collection, getDocs, getFirestore } from 'firebase/firestore'
 
 
 const ItemListContainer = () => {
 
-  const [productos,setProductos] = useState ([])
-  const [loading,setLoading] = useState(true)
-  const {idCategory}=useParams()
+  const [productos, setProductos] = useState([])
+  const [loading, setLoading] = useState(true)
+  const { idCategory } = useParams()
 
-  
-  const arrayProductos = [
-    {nombre : 'Producto 1',id:1,stock:4,precio:5000,img:'multimedia/sombra.png',categoria:"1"},
-    {nombre : 'Producto 2',id:2,stock:0,precio:7000,img:'multimedia/sombra.png',categoria:"2"},
-    {nombre : 'Producto 3',id:3,stock:3,precio:4500,img:'multimedia/sombra.png',categoria:"1"},
-    {nombre : 'Producto 4',id:4,stock:7,precio:2500,img:'multimedia/sombra.png',categoria:"1"},
-
-  ]
-
-  
-
-  useEffect(()=>{
-    const promesaProductos = new Promise((resolve, reject) => {
-
-      setTimeout(()=>{
-        resolve(arrayProductos)
-        setLoading(false)
-      },2000)
-    })
-  
-    promesaProductos.then((resultado)=>{
-      if(idCategory=="1"){
-        const nuevoArray = resultado.filter(res=>{
-          return res.categoria=="1"
-        })
-        setProductos(nuevoArray)
+  useEffect(() => {
+    const db = getFirestore()
+    const collectionProductosFirebase = collection(db, "productos")
+    getDocs(collectionProductosFirebase).then((res) => {
+      let arrayFirebase = res.docs
+      arrayFirebase = arrayFirebase.map((producto) => {
+        return { id: producto.id, ...producto.data() }
+      })
+      setLoading(false)
+      if (idCategory == "1") {
+        setProductos(arrayFirebase.filter(res => {
+          return res.categoria == "1"
+        }))
       }
-      if(idCategory=="2"){
-        const nuevoArray = resultado.filter(res=>{
-          return res.categoria=="2"
-        })
-        setProductos(nuevoArray)
+      if (idCategory == "2") {
+        setProductos(arrayFirebase.filter(res => {
+          return res.categoria == "2"
+        }))
       }
-      if(idCategory==undefined){
-        setProductos(resultado)
+      if (idCategory == undefined) {
+        setProductos(arrayFirebase)
       }
-      
     })
   })
 
-     
+
   return (
     <div>
-        <Loading loading = {loading}/>
-        <Itemlist prod = {productos}/>
+      <Loading loading={loading} />
+      <Itemlist prod={productos} />
     </div>
   )
 }

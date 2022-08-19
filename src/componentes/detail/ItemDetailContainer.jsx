@@ -1,27 +1,34 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
+import Loading from '../loading/Loading'
+
 
 const ItemDetailContainer = () => {
 
-  const {idProducto}=useParams()
-  const [productosDetail,setProductosDetail] = useState ([])
-
-  
-  const arrayProductos = [
-    {nombre : 'Producto 1',id:1,stock:4,precio:5000,img:'multimedia/sombra.png',categoria:"1"},
-    {nombre : 'Producto 2',id:2,stock:0,precio:7000,img:'multimedia/sombra.png',categoria:"2"},
-    {nombre : 'Producto 3',id:3,stock:3,precio:4500,img:'multimedia/sombra.png',categoria:"1"}
-  ]
+  const { idProducto } = useParams()
+  const [item, setItem] = useState({})
+  const [loading, setLoading] = useState(true)
 
 
-  useEffect(()=>{
-    setProductosDetail(arrayProductos)
-  },[])
+  useEffect(() => {
+
+    const db = getFirestore()
+    const itemFirebase = doc(db, "productos", idProducto)
+    getDoc(itemFirebase).then((res) => {    
+      setItem({id:res.id,...res.data()})
+      setLoading(false)
+    })
+  }, [])
+
 
   return (
-    <div className = "d-flex justify-content-center">
-      <ItemDetail idProducto = {idProducto} productos = {productosDetail}/>
+    <div>
+      <div><Loading loading={loading} /></div>
+      <div className="d-flex justify-content-center">
+        {!loading && <ItemDetail item={item} />}
+      </div>
     </div>
   )
 }
