@@ -34,7 +34,7 @@ const Cart = () => {
       </div>
       {!carritoVacio && <div> <div id='totalAPagar'>Total a Pagar: {totalAPagar}</div><div className='botonesCarritoDiv'><button  onClick={botonVaciarCarrito} className="botonesCarrito btn btn-secondary">Vaciar Carrito</button>
         <Link style={{ textDecoration: "none" }} to={"/"}><button className="botonesCarrito btn btn-secondary">Seguir Comprando</button></Link>
-        <button className="botonesCarrito btn btn-secondary">Finalizar Compra</button></div>
+        <Link style={{ textDecoration: "none" }} to={"/finalizarCompra"}><button className="botonesCarrito btn btn-secondary">Finalizar Compra</button></Link></div>
         </div>}
       </div>
   )
