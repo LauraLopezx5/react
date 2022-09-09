@@ -10,9 +10,17 @@
 }
 
 #mensajeFinal{
+    background-color: #fbe3e3;
+    margin: 1rem;
+    max-width: 40rem;
+}
+
+#finalizar{
     display: flex;
     justify-content: center;
-    font-size: 1.5rem;
-    border: 3px, solid, black;
-    margin-top: 1rem;
+}
+
+#boton{
+    display: flex;
+    justify-content: center;
 }

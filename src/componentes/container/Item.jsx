@@ -8,7 +8,8 @@ const Item = ({item}) => {
 
   return (
     <div className ="card cardProductos">
-      <Link to = {`/item/${item.id}`}><img src= "../multimedia/sombra.png"
+      <img src="" alt="" />
+      <Link to = {`/item/${item.id}`}><img src={item.img}
       className="card-img-top" alt="..." /></Link>
       
       <div className ="card-body">
